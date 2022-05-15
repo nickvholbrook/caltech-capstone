@@ -1,4 +1,4 @@
-# calgtech-capstone
+# Caltech Capstone Project
 Infra Optimization.
 
 Project 1
