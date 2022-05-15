@@ -9,7 +9,6 @@ To-do:
 
 1. Write Terraform code to create AWS resources:
 
-    - Create S3 Bucket for Terraform Statefile and set permissions
     - EC2 instances
     - Load Balancer
     - Elastic IP Address
