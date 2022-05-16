@@ -15,7 +15,7 @@ resource "aws_instance" "controlplane" {
   ami           = "ami-0a244485e2e4ffd03"
   instance_type = "t2.medium"
   key_name = "k8s-keypair"
-  hostname = 
+  hostname = "controlplane" 
   tags = {
     name = "controlplane"
   }
