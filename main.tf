@@ -12,7 +12,7 @@ provider "aws" {}
 resource "aws_instance" "controlplane" {
   ami           = "ami-0d729d2846a86a9e7"
   instance_type = "t2.micro"
-  key_name = k8s-keypair
+  key_name = "k8s-keypair"
   tags = {
     name = "controlplane"
   }
