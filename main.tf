@@ -7,7 +7,9 @@ terraform {
   }
 }
 
-provider "aws" {}
+provider "aws" {
+  region = "eu-west-2"
+}
 
 resource "aws_instance" "controlplane" {
   ami           = "ami-0a244485e2e4ffd03"
