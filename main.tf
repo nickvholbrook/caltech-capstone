@@ -15,13 +15,13 @@ resource "aws_instance" "controlplane" {
   ami           = "ami-0a244485e2e4ffd03"
   instance_type = "t2.medium"
   key_name = "k8s-keypair"
-  hostname = "controlplane" 
   tags = {
     name = "controlplane"
   }
 
   user_data = <<EOF
   #!/bin/bash
+  hostname "controlplane" 
   apt-get update -y
   sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
   echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
