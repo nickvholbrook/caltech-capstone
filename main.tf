@@ -19,16 +19,16 @@ resource "aws_instance" "controlplane" {
     name = "controlplane"
   }
 
-  user_data = <<EOF
-  #!/bin/bash
-  sudo hostname "controlplane" 
-  sudo apt-get update -y
-  sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-  sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-  sudo apt-get update
-  sudo apt install -y kubeadm=1.20.5-00 kubelet=1.20.5-00 kubectl docker.io
+user_data = <<EOF
+#!/bin/bash
+sudo hostname "controlplane" 
+sudo apt-get update -y
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt install -y kubeadm=1.20.5-00 kubelet=1.20.5-00 kubectl docker.io
 
-  EOF
+EOF
 
 }
 
