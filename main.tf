@@ -14,12 +14,12 @@ provider "aws" {
 resource "aws_instance" "controlplane" {
   ami           = "ami-0a244485e2e4ffd03"
   instance_type = "t2.medium"
-  key_name = "k8s-keypair"
+  key_name      = "k8s-keypair"
   tags = {
     name = "controlplane"
   }
 
-user_data = <<EOF
+  user_data =<<EOF
 #!/bin/bash
 sudo hostname "controlplane" 
 sudo apt-get update -y
