@@ -10,7 +10,7 @@ terraform {
 provider "aws" {}
 
 resource "aws_instance" "controlplane" {
-  ami           = "ami-0d729d2846a86a9e7"
+  ami           = "ami-0a244485e2e4ffd03"
   instance_type = "t2.micro"
   key_name = "k8s-keypair"
   tags = {
@@ -28,7 +28,7 @@ resource "aws_instance" "controlplane" {
 }
 
 # resource "aws_instance" "node1" {
-#   ami           = "ami-0d729d2846a86a9e7"
+#   ami           = "ami-0a244485e2e4ffd03"
 #   instance_type = "t2.micro"
 
 #     tags = {
