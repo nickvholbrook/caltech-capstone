@@ -20,9 +20,10 @@ data "aws_ami_ids" "ubuntu" {
   }
 }
 
+# Install CP1
+
 resource "aws_instance" "controlplane1" {
   ami = data.aws_ami.ubuntu.id
-  #ami           = "ami-0a244485e2e4ffd03"
   instance_type = "t2.medium"
   key_name      = "k8s-keypair"
   tags = {
@@ -42,10 +43,9 @@ EOF
 
 }
 
+# Install CP2
 resource "aws_instance" "controlplane2" {
   ami = data.aws_ami.ubuntu.id
-  #ami           = "ami-0a244485e2e4ffd03"
-
   instance_type = "t2.medium"
   key_name      = "k8s-keypair"
   tags = {
@@ -65,17 +65,21 @@ EOF
 
 }
 
+# Install EC2 Instance for HAProxy load balancer
+resource "aws_instance" "lbhaproxy" {
+  ami = data.aws_ami.ubuntu.id
+  instance_type = "t2.medium"
+  key_name      = "k8s-keypair"
+  tags = {
+    name = "lbhaproxy"
+  }
 
-# resource "aws_lb" "test" {
-#   name               = "k8s-loadbalancer"
-#   internal           = false
-#   load_balancer_type = "network"
-#   subnets            = [for subnet in aws_subnet.public : subnet.id]
+  user_data =<<EOF
+#!/bin/bash
+sudo hostname "lbhaproxy" 
+sudo apt-get update -y
+sudo apt install haproxy
 
-#   enable_deletion_protection = true
+EOF
 
-#   tags = {
-#     Environment = "production"
-#   }
-# }
-
+}
