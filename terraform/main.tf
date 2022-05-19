@@ -83,3 +83,9 @@ sudo apt install haproxy
 EOF
 
 }
+
+
+resource "aws_eip" "default" {
+  instance = aws_instance.lbhaproxy.id
+  vpc      = true
+}
