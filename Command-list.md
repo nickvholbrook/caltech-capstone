@@ -1,4 +1,14 @@
-#!/bin/bash
+
+
+# Setup Cluster
+
+sudo kubeadm init --node-name controlplane 
+
+# Setup .kube/config
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
 # Install Calico CNI
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 

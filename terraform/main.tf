@@ -49,7 +49,7 @@ resource "aws_instance" "controlplane1" {
 
   user_data =<<EOF
 #!/bin/bash
-sudo hostname "controlplane" 
+sudo hostname "controlplane1" 
 sudo apt-get update -y
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -71,7 +71,7 @@ resource "aws_instance" "controlplane2" {
 
   user_data =<<EOF
 #!/bin/bash
-sudo hostname "controlplane" 
+sudo hostname "controlplane2" 
 sudo apt-get update -y
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
