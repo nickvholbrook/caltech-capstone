@@ -2,7 +2,7 @@
 
 # Setup Cluster
 
-sudo kubeadm init --node-name controlplane 
+sudo kubeadm init --node-name controlplane1 --control-plane-endpoint 18.169.181.201 --upload-certs 
 
 # Setup .kube/config
   mkdir -p $HOME/.kube
@@ -19,3 +19,9 @@ ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT snapshot save snapshotdb
 
 ETCDCTL_API=3 etcdctl --write-out=table snapshot status snapshotdb
 
+KUBE
+
+
+# Login to Docker registry
+# See: https://stackoverflow.com/questions/49032812/how-to-pull-image-from-dockerhub-in-kubernetes
+kubectl create secret docker-registry regcred --docker-username=nickholbrook --docker-password=<your-pword> --docker-email=nick.holbrook@gmail.com -n default
