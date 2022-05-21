@@ -9,6 +9,8 @@ terraform {
 
 provider "aws" {
   region = "eu-west-2"
+ #profile = "simplilearn"
+  profile = "default"
 }
 
 data "aws_ami_ids" "ubuntu" {
@@ -41,7 +43,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "controlplane1" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
+  instance_type = "t3.medium"
   key_name      = "k8s-keypair"
   tags = {
     name = "controlplane1"
@@ -63,7 +65,7 @@ EOF
 # Install CP2
 resource "aws_instance" "controlplane2" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
+  instance_type = "t3.medium"
   key_name      = "k8s-keypair"
   tags = {
     name = "controlplane2"
@@ -85,7 +87,7 @@ EOF
 # Install EC2 Instance for HAProxy load balancer
 resource "aws_instance" "lbhaproxy" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.medium"
+  instance_type = "t3.medium"
   key_name      = "k8s-keypair"
   tags = {
     name = "lbhaproxy"
