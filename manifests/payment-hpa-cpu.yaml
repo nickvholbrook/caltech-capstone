@@ -11,9 +11,8 @@ spec:
     kind: Deployment
     name: payment-app
   targetCPUUtilizationPercentage: 50
-  targetMemoryUtilizationPercentage: 50
 status:
   currentReplicas: 0
   desiredReplicas: 0
-
+  
   # kubectl run -i --tty load-generator --rm --image=busybox:1.28 --rO- http://payment-app; done""while sleep 0.01; do wget -q -O

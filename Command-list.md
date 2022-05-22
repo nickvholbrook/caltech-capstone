@@ -1,5 +1,10 @@
 # Kubernetes on AWS EC2: https://www.golinuxcloud.com/setup-kubernetes-cluster-on-aws-ec2/
 
+# Prerequisites
+
+Allow TCP 6443 in
+
+
 # Setup Cluster
 
 sudo kubeadm init --node-name controlplane1 --control-plane-endpoint 18.169.181.201 --upload-certs 
