@@ -22,6 +22,12 @@ spec:
             cpu: 500m
           requests:
             cpu: 200m
+      tolerations:
+      - key: ""
+        operator: "Exists"
+        effect:
+---
+
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +37,6 @@ metadata:
     run: payment-app
 spec:
   ports:
-  - port: 80
+  - port: 8080
   selector:
     run: payment-app
