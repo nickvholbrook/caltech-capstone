@@ -8,3 +8,4 @@ terraform/.terraform/plugins/registry.terraform.io/hashicorp/aws/3.55.0/linux_am
 terraform/terraform.tfstate
 terraform/.terraform/plugins/selections.json
 terraform/terraform.tfstate.backup
+terraform/.terraform.tfstate.lock.info
