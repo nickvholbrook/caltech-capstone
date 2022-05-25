@@ -30,3 +30,5 @@ KUBE
 # Login to Docker registry
 # See: https://stackoverflow.com/questions/49032812/how-to-pull-image-from-dockerhub-in-kubernetes
 kubectl create secret docker-registry regcred --docker-username=nickholbrook --docker-password=<your-pword> --docker-email=nick.holbrook@gmail.com -n default
+
+# Edit application.properties file in Java project to connect to MySql container
