@@ -2,7 +2,7 @@
 
 # Prerequisites
 
-Allow TCP 6443 in
+Allow TCP 6443 inbound via Security Group
 
 
 # Setup Cluster
