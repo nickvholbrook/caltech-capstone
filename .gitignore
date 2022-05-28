@@ -9,3 +9,5 @@ terraform/terraform.tfstate
 terraform/.terraform/plugins/selections.json
 terraform/terraform.tfstate.backup
 terraform/.terraform.tfstate.lock.info
+docker/app.jar
+.DS_Store

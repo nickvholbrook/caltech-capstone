@@ -7,7 +7,7 @@ Allow TCP 6443 inbound via Security Group
 
 # Setup Cluster
 
-sudo kubeadm init --node-name controlplane1 --control-plane-endpoint 18.169.181.201 --upload-certs 
+sudo kubeadm init --node-name controlplane1 --control-plane-endpoint <ip address> --upload-certs 
 
 # Setup .kube/config
   mkdir -p $HOME/.kube
