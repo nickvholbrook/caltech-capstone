@@ -13,14 +13,14 @@ provider "aws" {
   profile = "default"
 }
 
-data "aws_ami_ids" "ubuntu" {
-  owners = ["099720109477"]
+# data "aws_ami_ids" "ubuntu" {
+#   owners = ["099720109477"]
 
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
-  }
-}
+#   filter {
+#     name   = "name"
+#     values = ["ubuntu/images/ubuntu-*-*-amd64-server-*"]
+#   }
+# }
 
 data "aws_ami" "ubuntu" {
     most_recent = true
@@ -108,7 +108,7 @@ EOF
 
 
 resource "aws_eip" "default" {
-  instance = aws_instance.lbhaproxy.id
+  instance = aws_instance.controlplane1.id
   vpc      = true
 }
 
