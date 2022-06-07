@@ -27,7 +27,8 @@ data "aws_ami" "ubuntu" {
 
     filter {
         name   = "name"
-        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+       # values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+        values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
     }
 
     filter {
@@ -38,7 +39,7 @@ data "aws_ami" "ubuntu" {
     owners = ["099720109477"] # Canonical
 }
 
-
+  
 # Install CP1
 
 resource "aws_instance" "controlplane1" {
