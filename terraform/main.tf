@@ -64,50 +64,52 @@ EOF
 }
 
 # Install CP2
-resource "aws_instance" "controlplane2" {
-  ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.tiny"
-  key_name      = "k8s-keypair"
-  tags = {
-    name = "controlplane2"
-  }
+# resource "aws_instance" "controlplane2" {
+#   ami = data.aws_ami.ubuntu.id
+#   instance_type = "t2.tiny"
+#   key_name      = "k8s-keypair"
+#   tags = {
+#     name = "controlplane2"
+#   }
 
-  user_data = <<EOF
-#!/bin/bash
-sudo hostname "controlplane2" 
-sudo echo "controlplane2" > /etc/hostname
-sudo apt-get update -y
-sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
-sudo apt install -y kubeadm=1.20.5-00 kubelet=1.20.5-00 kubectl docker.io
+#   user_data = <<EOF
+# #!/bin/bash
+# sudo hostname "controlplane2" 
+# sudo echo "controlplane2" > /etc/hostname
+# sudo apt-get update -y
+# sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+# sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+# sudo apt-get update
+# sudo apt install -y kubeadm=1.20.5-00 kubelet=1.20.5-00 kubectl docker.io
 
-EOF
+# EOF
 
-}
+# }
 
-# Install EC2 Instance for HAProxy load balancer
-resource "aws_instance" "lbhaproxy" {
-  ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.tiny"
-  key_name      = "k8s-keypair"
-  tags = {
-    name = "lbhaproxy"
-  }
+# # Install EC2 Instance for HAProxy load balancer
+# resource "aws_instance" "lbhaproxy" {
+#   ami = data.aws_ami.ubuntu.id
+#   instance_type = "t2.tiny"
+#   key_name      = "k8s-keypair"
+#   tags = {
+#     name = "lbhaproxy"
+#   }
 
-  user_data = <<EOF
-#!/bin/bash
-sudo hostname "lbhaproxy" 
-sudo echo "lbhaproxy" > /etc/hostname
-sudo apt-get update -y
-sudo apt install haproxy
+#   user_data = <<EOF
+# #!/bin/bash
+# sudo hostname "lbhaproxy" 
+# sudo echo "lbhaproxy" > /etc/hostname
+# sudo apt-get update -y
+# sudo apt install haproxy
 
-EOF
+# EOF
 
-}
+# }
 
 
 resource "aws_eip" "default" {
   instance = aws_instance.lbhaproxy.id
   vpc      = true
 }
+
+
