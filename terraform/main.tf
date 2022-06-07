@@ -43,7 +43,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "controlplane1" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.tiny"
+  instance_type = "t2.micro"
   key_name      = "k8s-keypair"
   tags = {
     name = "controlplane1"
@@ -51,8 +51,6 @@ resource "aws_instance" "controlplane1" {
 
   user_data = <<EOF
 #!/bin/bash
-sudo hostname "controlplane1" 
-sudo echo "controlplane1" > /etc/hostname
 sudo apt-get update -y
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
@@ -66,7 +64,7 @@ EOF
 # Install CP2
 # resource "aws_instance" "controlplane2" {
 #   ami = data.aws_ami.ubuntu.id
-#   instance_type = "t2.tiny"
+#   instance_type = "t2.micro"
 #   key_name      = "k8s-keypair"
 #   tags = {
 #     name = "controlplane2"
@@ -89,7 +87,7 @@ EOF
 # # Install EC2 Instance for HAProxy load balancer
 # resource "aws_instance" "lbhaproxy" {
 #   ami = data.aws_ami.ubuntu.id
-#   instance_type = "t2.tiny"
+#   instance_type = "t2.micro"
 #   key_name      = "k8s-keypair"
 #   tags = {
 #     name = "lbhaproxy"
