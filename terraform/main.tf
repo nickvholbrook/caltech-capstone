@@ -44,7 +44,7 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "controlplane1" {
   ami = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name      = "k8s-keypair"
   tags = {
     name = "controlplane1"
