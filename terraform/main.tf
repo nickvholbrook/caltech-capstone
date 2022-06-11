@@ -50,12 +50,22 @@ resource "aws_instance" "controlplane1" {
     name = "controlplane1"
   }
 
+  provisioner "local-exec" {
+    command = "echo This is a test of the local provisioner.  Today is $TODAY. >> ~/message.txt"
+
+    environment = {
+      TODAY = "Saturday"
+     }
+  }
+
   user_data = <<EOF
 #!/bin/bash
-sudo apt-get update -y
+sudo hostname "controlplane1" 
+sudo echo "controlplane1" > /etc/hostname
+sudo apt update -y
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-sudo apt-get update
+sudo apt update
 sudo apt install -y kubeadm=1.20.5-00 kubelet=1.20.5-00 kubectl docker.io
 
 EOF
@@ -110,5 +120,6 @@ resource "aws_eip" "default" {
   instance = aws_instance.controlplane1.id
   vpc      = true
 }
+
 
 

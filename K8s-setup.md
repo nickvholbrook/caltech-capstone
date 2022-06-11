@@ -9,6 +9,10 @@ Allow TCP 6443 inbound via Security Group
 
 sudo kubeadm init --node-name controlplane1 --control-plane-endpoint <ip address> --upload-certs 
 
+or
+
+sudo kubeadm init --node-name controlplane1 --ignore-preflight-errors=NumCPU --ignore-preflight-errors=Mem
+
 # Setup .kube/config
   mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
