@@ -60,8 +60,6 @@ resource "aws_instance" "controlplane1" {
 
   user_data = <<EOF
 #!/bin/bash
-sudo hostname "controlplane1" 
-sudo echo "controlplane1" > /etc/hostname
 sudo apt update -y
 sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list

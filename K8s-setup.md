@@ -1,4 +1,5 @@
 # Kubernetes on AWS EC2: https://www.golinuxcloud.com/setup-kubernetes-cluster-on-aws-ec2/
+# Repo: https://github.com/nickvholbrook/caltech-capstone.git
 
 # Prerequisites
 

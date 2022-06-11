@@ -8,6 +8,10 @@ spec:
   selector:
     app: payment-db
   clusterIP: None
+  tolerations:
+  - key: ""
+    operator: "Exists"
+    effect:
 ---
 apiVersion: apps/v1
 kind: Deployment
