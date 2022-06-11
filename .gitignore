@@ -1,0 +1,14 @@
+.terraform.tfstate
+.terraform.tfstate.backup
+.terraform.lock.hcl
+
+.terraform/providers/registry.terraform.io/hashicorp/aws/3.75.1/windows_amd64/terraform-provider-aws_v3.75.1_x5.exe
+.terraform/providers/registry.terraform.io/hashicorp/aws/4.14.0/windows_amd64/terraform-provider-aws_v4.14.0_x5.exe
+terraform/.terraform/plugins/registry.terraform.io/hashicorp/aws/3.55.0/linux_amd64/terraform-provider-aws_v3.55.0_x5
+terraform/terraform.tfstate
+terraform/.terraform/plugins/selections.json
+terraform/terraform.tfstate.backup
+terraform/.terraform.tfstate.lock.info
+docker/app.jar
+.DS_Store
+terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/3.55.0/darwin_arm64/terraform-provider-aws_v3.55.0_x5

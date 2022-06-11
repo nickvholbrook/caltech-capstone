@@ -71,3 +71,4 @@ The following things to be kept in check:
 
 
 
+# Run MYSQL via Docker container: docker run --detach --name payment-db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password1234 -e MYSQL_DATABASE=payment -e MYSQL_USER=springuser -e MYSQL_PASSWORD=mypass1234 -d mysql
