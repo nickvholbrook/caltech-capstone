@@ -22,6 +22,11 @@ sudo kubeadm init --node-name controlplane1 --ignore-preflight-errors=NumCPU --i
 # Install Calico CNI
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
+# Remove taint on controlplane node
+kubectl taint nodes controlplane1 node-role.kubernetes.io/master-
+
+
+
 # Snapshot the ETCD database
 ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT snapshot save snapshotdb
 
@@ -37,3 +42,11 @@ KUBE
 kubectl create secret docker-registry regcred --docker-username=nickholbrook --docker-password=<your-pword> --docker-email=nick.holbrook@gmail.com -n default
 
 # Edit application.properties file in Java project to connect to MySql container
+
+# User Authentication
+
+mkdir ~/k8sadmin
+openssl genrsa -out ~/k8sadmin/k8sadmin.key 2048
+openssl req -new -key ~/k8sadmin/k8sadmin.key -subj "/CN=k8sadmin" -out ~/k8sadmin/k8sadmin.csr
+kubectl apply -f k8sadmin-csr.yaml 
+kubectl get csr csr-for-k8sadmin -o jsonpath='{.status.certificate}' | base64 --decode > ~/k8sadmin/k8sadmin.crt
