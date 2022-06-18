@@ -12,3 +12,8 @@ terraform/.terraform.tfstate.lock.info
 docker/app.jar
 .DS_Store
 terraform/.terraform/providers/registry.terraform.io/hashicorp/aws/3.55.0/darwin_arm64/terraform-provider-aws_v3.55.0_x5
+.idea/caltech-capstone.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml

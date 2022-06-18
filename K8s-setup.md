@@ -25,7 +25,8 @@ kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 # Remove taint on controlplane node
 kubectl taint nodes controlplane1 node-role.kubernetes.io/master-
 
-
+# Clone repo
+git clone https://github.com/nickvholbrook/caltech-capstone.git
 
 # Snapshot the ETCD database
 ETCDCTL_API=3 etcdctl --endpoints $ENDPOINT snapshot save snapshotdb
