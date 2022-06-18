@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: payment-app
-        image: nickholbrook/gs-spring-boot-docker
+        image: nickholbrook/gs-accessing-data-mysql:v2
         ports:
         - containerPort: 8080
         resources:
