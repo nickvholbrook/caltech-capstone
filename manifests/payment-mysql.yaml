@@ -8,6 +8,7 @@ spec:
   selector:
     app: payment-db
   clusterIP: None
+
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -47,3 +48,7 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: mysql-pv-claim
+      tolerations:
+      - key: ""
+        operator: "Exists"
+        effect:
