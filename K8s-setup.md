@@ -51,3 +51,6 @@ openssl genrsa -out ~/k8sadmin/k8sadmin.key 2048
 openssl req -new -key ~/k8sadmin/k8sadmin.key -subj "/CN=k8sadmin" -out ~/k8sadmin/k8sadmin.csr
 kubectl apply -f k8sadmin-csr.yaml 
 kubectl get csr csr-for-k8sadmin -o jsonpath='{.status.certificate}' | base64 --decode > ~/k8sadmin/k8sadmin.crt
+
+# Run a Docker container locally
+docker run --name payment-db -e MYSQL_ROOT_PASSWORD=mypass1234 -e MYSQL_DATABASE=payment-db -e MYSQL_PASSWORD=mypass1234 -e MYSQL_USER=springuser -d mysql
