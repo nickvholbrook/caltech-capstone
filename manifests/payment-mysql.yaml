@@ -1,29 +1,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-db
+  name: paymentdb
 spec:
   ports:
   - port: 3306
   selector:
-    app: payment-db
+    app: paymentdb
   clusterIP: None
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-db
+  name: paymentdb
 spec:
   selector:
     matchLabels:
-      app: payment-db
+      app: paymentdb
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: payment-db
+        app: paymentdb
     spec:
       containers:
       - image: mysql:5.6
