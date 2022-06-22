@@ -37,7 +37,7 @@ spec:
         - name: MYSQL_PASSWORD
           value: "mypass1234"
         - name: MYSQL_DATABASE
-          value: "payment-db"
+          value: "paymentdb"
         ports:
         - containerPort: 3306
           name: mysql
