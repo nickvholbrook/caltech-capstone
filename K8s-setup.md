@@ -53,4 +53,4 @@ kubectl apply -f k8sadmin-csr.yaml
 kubectl get csr csr-for-k8sadmin -o jsonpath='{.status.certificate}' | base64 --decode > ~/k8sadmin/k8sadmin.crt
 
 # Run a Docker container locally
-docker run --name payment-db -e MYSQL_ROOT_PASSWORD=mypass1234 -e MYSQL_DATABASE=payment-db -e MYSQL_PASSWORD=mypass1234 -e MYSQL_USER=springuser -d mysql
+docker run --name payment-db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mypass1234 -e MYSQL_DATABASE=paymentdb -e MYSQL_PASSWORD=mypass1234 -e MYSQL_USER=springuser -d mysql
