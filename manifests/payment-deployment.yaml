@@ -28,16 +28,16 @@ spec:
         effect:
 ---
 
----
 apiVersion: v1
 kind: Service
 metadata:
   name: payment-app
   labels:
-    run: payment-app
+    app: payment-app
 spec:
+  type: NodePort
   ports:
-  - port: 8080    
+  - port: 8080
     targetPort: 8080
   selector:
-    run: payment-app
+    app: payment-app
