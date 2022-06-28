@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: payment-app
-        image: nickholbrook/gs-accessing-data-mysql:v6
+        image: nickholbrook/gs-accessing-data-mysql:v7
         ports:
         - containerPort: 8080
         resources:
