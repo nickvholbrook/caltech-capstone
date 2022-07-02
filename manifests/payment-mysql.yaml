@@ -1,29 +1,29 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: paymentdb
+  name: payment-db
 spec:
   ports:
   - port: 3306
   selector:
-    app: paymentdb
+    app: payment-db
   clusterIP: None
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: paymentdb
+  name: payment-db
 spec:
   selector:
     matchLabels:
-      app: paymentdb
+      app: payment-db
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: paymentdb
+        app: payment-db
     spec:
       containers:
       - image: mysql:5.6
@@ -37,7 +37,7 @@ spec:
         - name: MYSQL_PASSWORD
           value: "mypass1234"
         - name: MYSQL_DATABASE
-          value: "paymentdb"
+          value: "payment-db"
         ports:
         - containerPort: 3306
           name: mysql
